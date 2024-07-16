@@ -17,7 +17,11 @@ import os
 import warnings
 warnings.filterwarnings('ignore')
 
+import matplotlib.pyplot as plt
+from sklearn.metrics import roc_curve, auc
+
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
+print(device)
 
 """
 Config
