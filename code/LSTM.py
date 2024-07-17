@@ -71,7 +71,8 @@ def get_mfcc_feature(df, train_mode=True):
     features = []
     labels = []
     for _, row in tqdm(df.iterrows()):
-        y, sr = librosa.load(row['path'], sr=CONFIG.SR)
+        file_path = os.path.join('../../open/', row['path'])
+        y, sr = librosa.load(file_path, sr=CONFIG.SR)
         mfcc = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=CONFIG.N_MFCC)
         mfcc = np.mean(mfcc.T, axis=0)
         features.append(mfcc)
